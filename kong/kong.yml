@@ -1,0 +1,39 @@
+_format_version: "1.1"
+services:
+  - name: weatherbackend
+    protocol: http
+    host: weatherbackend
+    port: 8080
+    path: /
+    plugins: []
+    routes:
+      - tags:
+          - OAS3_import
+          - OAS3file_openapi.json
+        name: weatherbackend-infoAboutGeneralOutlook
+        methods:
+          - GET
+        paths:
+          - /weather/general/outlook$
+        strip_path: false
+      - tags:
+          - OAS3_import
+          - OAS3file_openapi.json
+        name: weatherbackend-generateGeneralOutlook
+        methods:
+          - POST
+        paths:
+          - /weather/general/outlook$
+        strip_path: false
+      - tags:
+          - OAS3_import
+          - OAS3file_openapi.json
+        name: weatherbackend-whatsTheSenseInThat
+        methods:
+          - GET
+        paths:
+          - /weather/(?<name>[^\/]+)$
+        strip_path: false
+    tags:
+      - OAS3_import
+      - OAS3file_openapi.json
